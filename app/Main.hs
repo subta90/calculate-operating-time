@@ -1,10 +1,15 @@
+{-# LANGUAGE ScopedTypeVariables #-}
 module Main where
-
-import Lib
 
 main :: IO ()
 main = do
-    putStrLn $ show $ minimumUpTimePerDay 18 $ remainingTime 0.0 140.0
+    putStrLn "現在の勤務時間?"
+    currentOperatingTime :: Double <- readLn
+    putStrLn "今月の最低稼働時間?"
+    minimumUpTime :: Double <- readLn
+    putStrLn "今月の残り稼働日数?"
+    remainingOperatingDay :: Int <- readLn
+    print $ minimumUpTimePerDay remainingOperatingDay $ remainingTime currentOperatingTime minimumUpTime
 
 -- 最低稼働時間を満たすための残り稼働時間を算出
 remainingTime :: Double -> Double -> Double
